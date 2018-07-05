@@ -33,7 +33,7 @@ else
 
 fi
 #this changes error 404 in the location settings
-sed -i 's|=404|try_files $uri $uri/ /index.php$is_args$args|g' # nginx file 
+sed -i 's|=404|try_files $uri $uri/ /index.php$is_args$args|g' /etc/nginx/sites-available/default
 
 
 #this restarts nginx after the config file was changes
