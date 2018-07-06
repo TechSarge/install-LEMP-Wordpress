@@ -17,21 +17,12 @@ read -e -p "please go install and setup lets encrypt if you have a domain name, 
 
 
 # this sets up sql for wordpress
-if [ $MYSQL_PASS ]
-then
     mysql -u "root" -p "EnterSQLPass" -e "CREATE DATABASE $DB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
 
     mysql -u "root" -p "EnterSQLPass" -e "GRANT ALL ON EnterDBname.* TO 'EndterDBuser'@'localhost' IDENTIFIED BY 'EnterDBpass';"
 
     mysql -u "root" -p "EnterSQLPass" -e "FLUSH PRIVILEGES; EXIT;"
-else
-    mysql -u "root" -e "CREATE DATABASE $DB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
 
-    mysql -u "root" -e "GRANT ALL ON EnterDBname.* TO 'EndterDBuser'@'localhost' IDENTIFIED BY 'EnterDBpass';"
-
-    mysql -u "root" -e "FLUSH PRIVILEGES; EXIT;"
-
-fi
 #this changes error 404 in the location settings
 sed -i 's|=404|try_files $uri $uri/ /index.php$is_args$args|g' /etc/nginx/sites-available/default
 
